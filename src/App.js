@@ -2,7 +2,7 @@ import React from "react";
 import "./app.scss";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import About from "./components/About";
 import Welcome from "./components/Welcome/Welcome";
@@ -12,7 +12,7 @@ import FrameToSTIX from "./components/ToSTIX/FrameToSTIX";
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <div className={"bx--grid"} style={{ paddingTop: "3.5rem" }}>
           <Routes>
@@ -22,7 +22,7 @@ function App() {
             <Route path="/" element={<Welcome />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }

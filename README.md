@@ -15,6 +15,9 @@ A typical connector requires two types of fields mapping:
 - Create mapping file from scratch.
 - Load existing mapping file, edit the file and save it to a new file.
 
+### Demo
+https://ibm.github.io/map-my-shifter/
+
 ### Development
 
 MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
@@ -52,7 +55,7 @@ MMS is a static client side app, there is no backend involved, except from servi
 
 ### Licensing
 
-map-my-shifter is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/barvhaim/map-my-shifter/blob/master/LICENSE) for the full license text.
+map-my-shifter is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/IBM/map-my-shifter/blob/master/LICENCE) for the full license text.
 
 Built with ❤️ from
 [IBM Cyber Security Center of Excellence (CCoE)](https://www.research.ibm.com/haifa/ccoe/)

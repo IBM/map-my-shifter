@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "dist/dist.js",
   "module": "dist/dist.js",
-  "homepage": "http://IBM.github.io/map-my-shifter",
+  "homepage": "http://IBM.github.io/map-my-shifter/",
   "files": [
     "dist",
     "README.md"
