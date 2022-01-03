@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+![logo](https://user-images.githubusercontent.com/16198896/129204519-78bb6448-246e-4e6d-a456-182792c7b894.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# `map-my-shifter`
 
-## Available Scripts
+> STIX-Shifter Connector's Mapping Builder
 
-In the project directory, you can run:
+The map-my-shifter (MMS) project provides a visual way for building mapping files for [STIX-Shifter](https://github.com/opencybersecurityalliance/stix-shifter) project.
+A typical connector requires two types of fields mapping:
 
-### `npm start`
+- From STIX pattern mapping - When building the data source query from STIX query, the STIX fields, for examples `file:name`, is mapped to the target data source's field. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-2-edit-the-from_stix_map-json-files)
+- To STIX object mapping - When results object is back from the data source, this object should be displayed in the final results as STIX object. For examples `{"filename": "xxxxx"}` should be translated to STIX object of type `file`. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-4-edit-the-to_stix_map-json-file)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Use-cases
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Create mapping file from scratch.
+- Load existing mapping file, edit the file and save it to a new file.
 
-### `npm test`
+### Development
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- run `npm install map-my-shifter`
+- import moduls: `import {FromStix, ToStix} from 'map-my-shifter';`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. map-my-shifter component: react component that shows the STIX mapping
+   - `<FromStix.Mapping/>`
+   - `<ToStix.Mapping/>`
+   - you can add property `StixVersion` with the value `V_2_0` or `V_2_1`, defult is V_2_0.
+   - for example: `<FromStix.Mapping StixVersion='V_2_1'/>`
 
-### `npm run eject`
+##
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. map-my-shifter import function: gets a javaScript object and adds the content to the mapping
+   - `FromStix.Import(JSON.parse({"ipv4-addr": {"fields": {"value": ["sourceip"]}}}))`
+   - `ToStix.Import(JSON.parse({"ipv4-addr": {"fields": {"value": ["sourceip"]}}}))`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. map-my-shifter export function: gets a string and opens a window to save the mapping to a file.
+   - `FromStix.Export('fileName')`
+   - `ToStix.Export('fileName')`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Authors
 
-## Learn More
+- [Bar Haim](https://github.com/barvhaim)
+- [Ido Hersko](https://github.com/idohersko)
+- [Noaa Kless](https://github.com/noaakl)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Licensing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+map-my-shifter is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/barvhaim/map-my-shifter/blob/master/LICENSE) for the full license text.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Built with ❤️ from
+[IBM Cyber Security Center of Excellence (CCoE)](https://www.research.ibm.com/haifa/ccoe/)
