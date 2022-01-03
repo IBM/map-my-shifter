@@ -1,6 +1,6 @@
 {
-  "name": "map-my-shifter2",
-  "version": "0.1.0",
+  "name": "map-my-shifter",
+  "version": "1.0.0",
   "main": "dist/dist.js",
   "module": "dist/dist.js",
   "homepage": "http://IBM.github.io/map-my-shifter/",
