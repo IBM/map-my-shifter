@@ -14,7 +14,7 @@ function App() {
     <Provider store={store}>
       <HashRouter>
         <Header />
-        <div className={"bx--grid"} style={{ paddingTop: "3.5rem" }}>
+        <div className={"bx--grid"}>
           <Routes>
             <Route path="/from_stix" element={<FrameFromSTIX />} />
             <Route path="/to_stix" element={<FrameToSTIX />} />
