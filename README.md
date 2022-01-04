@@ -4,23 +4,23 @@
 
 > STIX-Shifter Connector's Mapping Builder
 
-The map-my-shifter (MMS) project provides a visual way for building mapping files for [STIX-Shifter](https://github.com/opencybersecurityalliance/stix-shifter) project.
-A typical connector requires two types of fields mapping:
+The map-my-shifter (MMS) project provides a visual way for building mapping files for [STIX-Shifter](https://github.com/opencybersecurityalliance/stix-shifter) modules.
+A typical (module) connector requires two types of field mappings:
 
-- From STIX pattern mapping - When building the data source query from STIX query, the STIX fields, for examples `file:name`, is mapped to the target data source's field. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-2-edit-the-from_stix_map-json-files)
-- To STIX object mapping - When results object is back from the data source, this object should be displayed in the final results as STIX object. For examples `{"filename": "xxxxx"}` should be translated to STIX object of type `file`. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-4-edit-the-to_stix_map-json-file)
+- **From STIX** pattern mapping - When building the data source query from a STIX query, the STIX fields, for example `file:name`, is mapped to the target data source's field. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-2-edit-the-from_stix_map-json-files)
+- **To STIX** object mapping - When a results object is back from the data source, this object gets translated  in the final result as a STIX object. For example `{"filename": "xxxxx"}` should be translated to a STIX object of type `file`. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-4-edit-the-to_stix_map-json-file)
 
 ### Use-cases
 
-- Create mapping file from scratch.
-- Load existing mapping file, edit the file and save it to a new file.
+- Create a new mapping file from scratch, for a new stix shifter module.
+- Load an existing mapping file, edit the file and save it to a new file.
 
 ### Demo
 https://ibm.github.io/map-my-shifter/
 
 ### Development
 
-MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
+MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with the [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
 
 ### Installation
 
@@ -29,10 +29,10 @@ MMS is a static client side app, there is no backend involved, except from servi
 
 ### Usage
 
-1. map-my-shifter component: react component that shows the STIX mapping
+1. map-my-shifter component: a react component that displays the STIX mappings
    - `<FromStix.Mapping/>`
    - `<ToStix.Mapping/>`
-   - you can add property `StixVersion` with the value `V_2_0` or `V_2_1`, defult is V_2_0.
+   - you can add a  property `StixVersion` with the value `V_2_0` or `V_2_1`, defult is V_2_0.
    - for example: `<FromStix.Mapping StixVersion='V_2_1'/>`
 
 ##
