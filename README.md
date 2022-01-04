@@ -4,7 +4,7 @@
 
 > STIX-Shifter Connector's Mapping Builder
 
-The map-my-shifter (MMS) project provides a visual way for building mapping files for [STIX-Shifter](https://github.com/opencybersecurityalliance/stix-shifter) modules.
+The map-my-shifter (MMS) project provides a visual editor for building mappings for [STIX-Shifter](https://github.com/opencybersecurityalliance/stix-shifter) modules.
 A typical (module) connector requires two types of field mappings:
 
 - **From STIX** pattern mapping - When building the data source query from a STIX query, the STIX fields, for example `file:name`, is mapped to the target data source's field. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-2-edit-the-from_stix_map-json-files)
@@ -12,8 +12,10 @@ A typical (module) connector requires two types of field mappings:
 
 ### Use-cases
 
-- Create a new mapping file from scratch, for a new stix shifter module.
-- Load an existing mapping file, edit the file and save it to a new file.
+- If you just want to use the editor - you can use the [online version](https://ibm.github.io/map-my-shifter/) to:
+   - Create a new mapping file from scratch, for a new stix shifter module.
+   - Load an existing mapping file, edit the file and save it to a new file.
+- You can embed this editor as a react component in your own react carbon app
 
 ### Demo
 https://ibm.github.io/map-my-shifter/
@@ -25,7 +27,7 @@ MMS is a static client side app, there is no backend involved, except from servi
 ### Installation
 
 - run `npm install map-my-shifter`
-- import moduls: `import {FromStix, ToStix} from 'map-my-shifter';`
+- import modules: `import {FromStix, ToStix} from 'map-my-shifter';`
 
 ### Usage
 
