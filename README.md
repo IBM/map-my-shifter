@@ -10,27 +10,37 @@ A typical (module) connector requires two types of field mappings:
 - **From STIX** pattern mapping - When building the data source query from a STIX query, the STIX fields, for example `file:name`, is mapped to the target data source's field. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-2-edit-the-from_stix_map-json-files)
 - **To STIX** object mapping - When a results object is back from the data source, this object gets translated  in the final result as a STIX object. For example `{"filename": "xxxxx"}` should be translated to a STIX object of type `file`. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-4-edit-the-to_stix_map-json-file)
 
-### Use-cases
+## Demo Online Editor
+https://ibm.github.io/map-my-shifter/
+
+## Use-cases
 
 - If you just want to use the editor - you can use the [online version](https://ibm.github.io/map-my-shifter/) to:
    - Create a new mapping file from scratch, for a new stix shifter module.
    - Load an existing mapping file, edit the file and save it to a new file.
-- You can embed this editor as a react component in your own react carbon app
-
-### Demo
-https://ibm.github.io/map-my-shifter/
+- You can run the editor locally on your machine:
+   - clone the repo
+   - cd into your cloned repo
+   - run `npm install`
+   - run `npm start` TODO: is this correct?
+- You can run the editor inside a Docker container:
+   - TODO: add instructions and support for docker
+- You can embed this editor as a React component in your [own React Carbon app](#usage-as-a-react-component)
 
 ### Development
 
 MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with the [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
 
-### Installation
+## Usage as a React Component
+If you would like to use the editor with your own use case, such as a client app running in an electron framework, or embedding it into your own web app you can utilize it as a React component and wrap it with your own code. However, your web app must utilize the Carbon design system.
 
+### instructions for utiliziation as a React Component
 - run `npm install map-my-shifter`
 - import modules: `import {FromStix, ToStix} from 'map-my-shifter';`
 
-### Usage
+##
 
+Now you can use:
 1. map-my-shifter component: a react component that displays the STIX mappings
    - `<FromStix.Mapping/>`
    - `<ToStix.Mapping/>`
