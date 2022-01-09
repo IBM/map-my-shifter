@@ -15,7 +15,12 @@ A typical (module) connector requires two types of field mappings:
 - If you just want to use the editor - you can use the [online version](https://ibm.github.io/map-my-shifter/) to:
    - Create a new mapping file from scratch, for a new stix shifter module.
    - Load an existing mapping file, edit the file and save it to a new file.
-- You can embed this editor as a react component in your own react carbon app
+- You can run the editor locally on your machine:
+   - clone the repo
+   - cd into your cloned repo
+   - run `npm install`
+   - run `npm start`
+- You can embed this editor as a react component in your own react carbon app (add instructions and linkl to usage)
 
 ### Demo
 https://ibm.github.io/map-my-shifter/
