@@ -29,10 +29,10 @@ https://ibm.github.io/map-my-shifter/
 
 MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with the [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
 
-### Usage as a React Component
+## Usage as a React Component
 If you would like to use the editor with your own use case, such as a client app running in an electron framework, or embedding it into your own web app you can utilize it as a React component and wrap it with your own code. However, your web app must utilize the Carbon design system.
 
-## instructions for utiliziation as a React Component
+### instructions for utiliziation as a React Component
 - run `npm install map-my-shifter`
 - import modules: `import {FromStix, ToStix} from 'map-my-shifter';`
 
