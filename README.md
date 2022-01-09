@@ -23,6 +23,8 @@ https://ibm.github.io/map-my-shifter/
    - cd into your cloned repo
    - run `npm install`
    - run `npm start` TODO: is this correct?
+- You can run the editor inside a Docker container:
+   - TODO: add instructions and support for docker
 - You can embed this editor as a React component in your [own React Carbon app](#usage-as-a-react-component)
 
 ### Development
