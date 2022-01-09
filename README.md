@@ -19,8 +19,8 @@ A typical (module) connector requires two types of field mappings:
    - clone the repo
    - cd into your cloned repo
    - run `npm install`
-   - run `npm start`
-- You can embed this editor as a react component in your own react carbon app (add instructions and linkl to usage)
+   - run `npm start` TODO: is this correct?
+- You can embed this editor as a React component in your [own React Carbon app](#usage-as-a-react-component)
 
 ### Demo
 https://ibm.github.io/map-my-shifter/
@@ -29,13 +29,16 @@ https://ibm.github.io/map-my-shifter/
 
 MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with the [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
 
-### Installation
+### Usage as a React Component
+If you would like to use the editor with your own use case, such as a client app running in an electron framework, or embedding it into your own web app you can utilize it as a React component and wrap it with your own code. However, your web app must utilize the Carbon design system.
 
+## instructions for utiliziation as a React Component
 - run `npm install map-my-shifter`
 - import modules: `import {FromStix, ToStix} from 'map-my-shifter';`
 
-### Usage
+##
 
+Now you can use:
 1. map-my-shifter component: a react component that displays the STIX mappings
    - `<FromStix.Mapping/>`
    - `<ToStix.Mapping/>`
