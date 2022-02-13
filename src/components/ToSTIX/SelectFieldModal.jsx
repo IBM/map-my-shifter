@@ -3,6 +3,7 @@ import { Modal } from "@carbon/ibm-security";
 import { useDispatch, useSelector } from "react-redux";
 import { closeSelectFieldModal } from "../../store/actions/to_stix";
 import AddFields from "../STIX/AddFields";
+import {updateSearchFieldValue} from "../../store/actions/stix";
 
 const SelectFieldModal = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const SelectFieldModal = () => {
       open={isOpen}
       onRequestClose={() => {
         dispatch(closeSelectFieldModal());
+        dispatch(updateSearchFieldValue(""));
       }}
       modalHeading={"Select field"}
       hasForm={false}
