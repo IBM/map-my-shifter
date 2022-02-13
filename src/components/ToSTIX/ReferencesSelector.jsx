@@ -32,34 +32,32 @@ const ReferencesSelector = ({
   }, [allAvailableObjectKeys]);
 
   return (
-    <div className={"bx--col-md-2"}>
-      <MultiSelect.Filterable
-        key={`${mappedFieldId}_${selectedReferences}`}
-        id={`MultiSelect.Filterable_${mappedFieldId}`}
-        size={"sm"}
-        downshiftProps={{ setItemCount: selectedReferences.length }}
-        placeholder={"Search References"}
-        invalid={false}
-        invalidText="Invalid Selection"
-        items={allAvailableObjectKeys}
-        useTitleInItem={true}
-        disabled={allAvailableObjectKeys.length === 0}
-        initialSelectedItems={selectedReferences}
-        selectedItems={selectedReferences}
-        itemToString={(item) => (item ? item : "")}
-        onChange={(e) => {
-          dispatch(
-            updateStixField(
-              e.selectedItems,
-              "references",
-              objectKey,
-              sourceFieldId,
-              mappedFieldId
-            )
-          );
-        }}
-      />
-    </div>
+    <MultiSelect.Filterable
+      key={`${mappedFieldId}_${selectedReferences}`}
+      id={`MultiSelect.Filterable_${mappedFieldId}`}
+      size={"sm"}
+      downshiftProps={{ setItemCount: selectedReferences.length }}
+      placeholder={"Search References"}
+      invalid={false}
+      invalidText="Invalid Selection"
+      items={allAvailableObjectKeys}
+      useTitleInItem={true}
+      disabled={allAvailableObjectKeys.length === 0}
+      initialSelectedItems={selectedReferences}
+      selectedItems={selectedReferences}
+      itemToString={(item) => (item ? item : "")}
+      onChange={(e) => {
+        dispatch(
+          updateStixField(
+            e.selectedItems,
+            "references",
+            objectKey,
+            sourceFieldId,
+            mappedFieldId
+          )
+        );
+      }}
+    />
   );
 };
 

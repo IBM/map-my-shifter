@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import MappingObject from "./MappingObject";
 import Minimap from "./Minimap";
-import styles from "./to_stix.module.scss";
 import { MAPPING_TYPE } from "../../global/constants";
+import { Row, Column } from "@carbon/ibm-security";
 
 const MappingObjects = ({ type }) => {
   const isStix = type === MAPPING_TYPE.OBJECT;
@@ -13,21 +13,21 @@ const MappingObjects = ({ type }) => {
 
   if (isMappingEmpty) {
     return (
-      <div className="bx--row">
-        <div className={`bx--col`}>
+      <Row>
+        <Column>
           <p style={{ paddingTop: "1rem" }}>
             There are currently no {type}s to show. Click the “New {type}”
             button to start mapping or load configuration.
           </p>
-        </div>
-      </div>
+        </Column>
+      </Row>
     );
   }
 
   return (
-    <div className={`bx--row ${styles.MappingObjects}`}>
+    <Row>
       <Minimap isStix={isStix} />
-      <div className="bx--col-sm-3">
+      <Column sm={3}>
         {Object.keys(mapping).map((o) => {
           return (
             <div id={`${o}`} key={`${o}`}>
@@ -40,8 +40,8 @@ const MappingObjects = ({ type }) => {
             </div>
           );
         })}
-      </div>
-    </div>
+      </Column>
+    </Row>
   );
 };
 

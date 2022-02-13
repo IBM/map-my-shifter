@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { TextInput, Button } from "@carbon/ibm-security";
+import { TextInput, Button, Row, Column } from "@carbon/ibm-security";
 import {
-  Add20,
-  Close20,
+  Add24,
+  Close24,
   Close16,
-  ChevronUp32,
-  ChevronDown32,
+  ChevronUp24,
+  ChevronDown24,
   Checkmark16,
   Edit16,
 } from "@carbon/icons-react";
@@ -35,16 +35,16 @@ const ObjectHeader = ({ name, isOpen, setIsOpen, isStix }) => {
   };
 
   return (
-    <div className={`bx--row`}>
-      <span style={{ marginLeft: "1rem", cursor: "pointer" }}>
+    <Row className={styles.object_item__header}>
+      <span className={styles.expand_collapse__button}>
         {isOpen ? (
-          <ChevronDown32
+          <ChevronDown24
             onClick={() => {
               setIsOpen(!isOpen);
             }}
           />
         ) : (
-          <ChevronUp32
+          <ChevronUp24
             onClick={() => {
               setIsOpen(!isOpen);
             }}
@@ -52,33 +52,33 @@ const ObjectHeader = ({ name, isOpen, setIsOpen, isStix }) => {
         )}
       </span>
       {isEditingObjectName ? (
-        <div className={`bx--row ${styles.object_item__edit_title}`}>
-          <TextInput
-            className={`bx--col ${styles.object_item__title}`}
-            id={`${isStix}__${name}`}
-            labelText={""}
-            autoComplete={"off"}
-            value={newName}
-            invalid={!isValidObjectName(name, newName, objects)}
-            invalidText={
-              !newName
-                ? "Object name must contain atleast one character."
-                : "Object name already exists."
-            }
-            onChange={(input) => {
-              setName(input.target.value);
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                objectNameChangeHandler();
+        <>
+          <Column sm={2}>
+            <TextInput
+              className={`bx--col ${styles.object_item__title}`}
+              id={`${isStix}__${name}`}
+              labelText={""}
+              autoComplete={"off"}
+              value={newName}
+              invalid={!isValidObjectName(name, newName, objects)}
+              invalidText={
+                !newName
+                  ? "Object name must contain at least one character."
+                  : "Object name already exists."
               }
-            }}
-          />
+              onChange={(input) => {
+                setName(input.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  objectNameChangeHandler();
+                }
+              }}
+            />
+          </Column>
           <Button
-            className={`bx--col`}
             kind="ghost"
             size="sm"
-            style={{ paddingTop: 1 }}
             renderIcon={Checkmark16}
             iconDescription="Submit new object name"
             hasIconOnly
@@ -88,10 +88,8 @@ const ObjectHeader = ({ name, isOpen, setIsOpen, isStix }) => {
             }}
           />
           <Button
-            className={`bx--col`}
             kind="ghost"
             size="sm"
-            style={{ paddingTop: 1 }}
             renderIcon={Close16}
             iconDescription="Cancel"
             hasIconOnly
@@ -100,13 +98,14 @@ const ObjectHeader = ({ name, isOpen, setIsOpen, isStix }) => {
               setEditObjectName(false);
             }}
           />
-        </div>
+        </>
       ) : (
-        <div className={`bx--col ${styles.object_item__title}`}>
+        <Column className={styles.object_item__title}>
           {name}
+
           <Button
             kind="ghost"
-            style={{ paddingTop: 1 }}
+            size="sm"
             renderIcon={Edit16}
             iconDescription="Edit object name"
             hasIconOnly
@@ -114,12 +113,12 @@ const ObjectHeader = ({ name, isOpen, setIsOpen, isStix }) => {
               setEditObjectName(true);
             }}
           />
-        </div>
+        </Column>
       )}
 
-      <div className={`bx--col`} style={{ textAlign: "right" }}>
+      <Column className={styles.right_menu}>
         {isStix && (
-          <Add20
+          <Add24
             className={`${styles.object_item__btn}`}
             style={{
               marginRight: ".5rem",
@@ -131,7 +130,7 @@ const ObjectHeader = ({ name, isOpen, setIsOpen, isStix }) => {
             }}
           />
         )}
-        <Close20
+        <Close24
           className={`${styles.object_item__btn}`}
           onClick={(e) => {
             e.preventDefault();
@@ -141,16 +140,16 @@ const ObjectHeader = ({ name, isOpen, setIsOpen, isStix }) => {
               : dispatch(removeMetadataObject(name));
           }}
         />
-      </div>
-    </div>
+      </Column>
+    </Row>
   );
 };
 
 const MappingObject = ({ objectKey, objectData, isStix }) => {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className={`bx--row ${styles.object__item_box}`}>
-      <div className={`bx--col ${styles.object__item_content}`}>
+    <div className={`bx--row ${styles.object_item__box}`}>
+      <div className={`bx--col ${styles.object_item__content}`}>
         <ObjectHeader
           name={objectKey}
           isOpen={isOpen}

@@ -4,7 +4,7 @@ import styles from "./to_stix.module.scss";
 
 const MetadataObjectBody = ({ sourceFields, objectKey }) => {
   return (
-    <div className={`bx--row ${styles.object_item__field}`}>
+    <div className={`bx--row`}>
       <div className={"bx--col-sm-4"}>
         <MappedFieldsTable
           isStix={false}

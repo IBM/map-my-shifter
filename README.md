@@ -8,16 +8,17 @@ The map-my-shifter (MMS) project provides a visual editor for building mappings 
 A typical (module) connector requires two types of field mappings:
 
 - **From STIX** pattern mapping - When building the data source query from a STIX query, the STIX fields, for example `file:name`, is mapped to the target data source's field. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-2-edit-the-from_stix_map-json-files)
-- **To STIX** object mapping - When a results object is back from the data source, this object gets translated  in the final result as a STIX object. For example `{"filename": "xxxxx"}` should be translated to a STIX object of type `file`. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-4-edit-the-to_stix_map-json-file)
+- **To STIX** object mapping - When a results object is back from the data source, this object gets translated in the final result as a STIX object. For example `{"filename": "xxxxx"}` should be translated to a STIX object of type `file`. [Read more...](https://github.com/opencybersecurityalliance/stix-shifter/blob/master/adapter-guide/develop-translation-module.md#step-4-edit-the-to_stix_map-json-file)
 
 ### Use-cases
 
 - If you just want to use the editor - you can use the [online version](https://ibm.github.io/map-my-shifter/) to:
-   - Create a new mapping file from scratch, for a new stix shifter module.
-   - Load an existing mapping file, edit the file and save it to a new file.
+  - Create a new mapping file from scratch, for a new stix shifter module.
+  - Load an existing mapping file, edit the file and save it to a new file.
 - You can embed this editor as a react component in your own react carbon app
 
 ### Demo
+
 https://ibm.github.io/map-my-shifter/
 
 ### Development
@@ -34,7 +35,7 @@ MMS is a static client side app, there is no backend involved, except from servi
 1. map-my-shifter component: a react component that displays the STIX mappings
    - `<FromStix.Mapping/>`
    - `<ToStix.Mapping/>`
-   - you can add a  property `StixVersion` with the value `V_2_0` or `V_2_1`, defult is V_2_0.
+   - you can add a property `StixVersion` with the value `V_2_0` or `V_2_1`, defult is V_2_0.
    - for example: `<FromStix.Mapping StixVersion='V_2_1'/>`
 
 ##

@@ -1,6 +1,6 @@
 import React from "react";
 import { Add32 } from "@carbon/icons-react";
-import { Button } from "@carbon/ibm-security";
+import { Button, Row, Column } from "@carbon/ibm-security";
 import { useDispatch, useSelector } from "react-redux";
 import { openNewObjectModal } from "../../store/actions/to_stix";
 import MappingObjects from "./MappingObjects";
@@ -8,6 +8,7 @@ import SelectFieldModal from "./SelectFieldModal";
 import MoveFieldToObjectModal from "./MoveFieldToObjectModal";
 import NewObjectModal from "./NewObjectModal";
 import { MAPPING_TYPE } from "../../global/constants";
+import styles from "./to_stix.module.scss";
 
 const MappingTab = ({ type, addingFunction }) => {
   const dispatch = useDispatch();
@@ -23,8 +24,8 @@ const MappingTab = ({ type, addingFunction }) => {
           <MoveFieldToObjectModal />
         </>
       )}
-      <div className="bx--row">
-        <div className="bx--col" style={{ textAlign: "right" }}>
+      <Row>
+        <Column className={styles.mapping_objects__top_menu}>
           <Button
             renderIcon={Add32}
             onClick={() => {
@@ -33,8 +34,8 @@ const MappingTab = ({ type, addingFunction }) => {
           >
             New {type}
           </Button>
-        </div>
-      </div>
+        </Column>
+      </Row>
 
       <MappingObjects type={type} />
     </>

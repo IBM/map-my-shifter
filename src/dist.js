@@ -14,55 +14,54 @@ import { stateMappingToShifterMapping as createFromStixShifterMapping } from "./
 import { stateMappingToShifterMapping as createToStixShifterMapping } from "./components/ToSTIX/utils";
 import { saveJsonToDisk } from "./components/STIX/utils";
 
-
 export const FromStix = {
-    Mapping: ({ StixVersion }) => {
-        useEffect(() => {
-            const version = StixVersion ? StixVersion : "V_2_0";
-            store.dispatch(changeStixVersion(STIX_VERSION[version]));
-            // eslint-disable-next-line
-        }, [StixVersion]);
-        return (
-            <Provider store={store}>
-                <FromSTIX />
-            </Provider>
-        );
-    },
-    Export: (fileName) => {
-        const fromStixMapping = store.getState().fromStix.stixMapping;
-        const FromStixShifterMapping =
-            createFromStixShifterMapping(fromStixMapping);
-        return saveJsonToDisk(fileName, FromStixShifterMapping);
-    },
-    Import: (mapping) => {
-        const stixMapping = loadFromStixJsonFromDisk(mapping)[0];
-        store.dispatch(createFromStixStateMapping(stixMapping));
-    },
+  Mapping: ({ StixVersion }) => {
+    useEffect(() => {
+      const version = StixVersion ? StixVersion : "V_2_0";
+      store.dispatch(changeStixVersion(STIX_VERSION[version]));
+      // eslint-disable-next-line
+    }, [StixVersion]);
+    return (
+      <Provider store={store}>
+        <FromSTIX />
+      </Provider>
+    );
+  },
+  Export: (fileName) => {
+    const fromStixMapping = store.getState().fromStix.stixMapping;
+    const FromStixShifterMapping =
+      createFromStixShifterMapping(fromStixMapping);
+    return saveJsonToDisk(fileName, FromStixShifterMapping);
+  },
+  Import: (mapping) => {
+    const stixMapping = loadFromStixJsonFromDisk(mapping)[0];
+    store.dispatch(createFromStixStateMapping(stixMapping));
+  },
 };
 
 export const ToStix = {
-    Mapping: ({ StixVersion }) => {
-        useEffect(() => {
-            const version = StixVersion ? StixVersion : "V_2_0";
-            store.dispatch(changeStixVersion(STIX_VERSION[version]));
-        }, [StixVersion]);
-        return (
-            <Provider store={store}>
-                <ToSTIX />
-            </Provider>
-        );
-    },
-    Export: (fileName) => {
-        const toStixMapping = store.getState().toStix.stixMapping;
-        const toStixMetadataMapping = store.getState().toStix.metadataMapping;
-        const ToStixShifterMapping = createToStixShifterMapping(
-            toStixMapping,
-            toStixMetadataMapping
-        );
-        return saveJsonToDisk(fileName, ToStixShifterMapping);
-    },
-    Import: (mapping) => {
-        const [stixMapping, metadataMapping] = loadToStixJsonFromDisk(mapping);
-        store.dispatch(createToStixStateMapping(stixMapping, metadataMapping));
-    },
+  Mapping: ({ StixVersion }) => {
+    useEffect(() => {
+      const version = StixVersion ? StixVersion : "V_2_0";
+      store.dispatch(changeStixVersion(STIX_VERSION[version]));
+    }, [StixVersion]);
+    return (
+      <Provider store={store}>
+        <ToSTIX />
+      </Provider>
+    );
+  },
+  Export: (fileName) => {
+    const toStixMapping = store.getState().toStix.stixMapping;
+    const toStixMetadataMapping = store.getState().toStix.metadataMapping;
+    const ToStixShifterMapping = createToStixShifterMapping(
+      toStixMapping,
+      toStixMetadataMapping
+    );
+    return saveJsonToDisk(fileName, ToStixShifterMapping);
+  },
+  Import: (mapping) => {
+    const [stixMapping, metadataMapping] = loadToStixJsonFromDisk(mapping);
+    store.dispatch(createToStixStateMapping(stixMapping, metadataMapping));
+  },
 };

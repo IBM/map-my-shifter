@@ -1,17 +1,19 @@
 import React from "react";
+import { Row, Column } from "@carbon/ibm-security";
 import SourceField from "./SourceField";
+import styles from "./to_stix.module.scss";
 
 const StixObjectBody = ({ sourceFields, objectKey }) => {
   const isEmptyObject = Object.keys(sourceFields).length === 0;
 
   if (isEmptyObject) {
     return (
-      <div className={`bx--row`}>
-        <div className={`bx--col`}>
+      <Row>
+        <Column>
           There are currently no data-source fields mapped. Click the "+" button
           to add your first data-source field.
-        </div>
-      </div>
+        </Column>
+      </Row>
     );
   }
 

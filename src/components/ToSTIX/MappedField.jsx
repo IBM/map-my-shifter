@@ -6,11 +6,13 @@ import {
   removeMetadataField,
   updateStixField,
   updateMetadataField,
+  addStixField,
+  addMetadataField,
 } from "../../store/actions/to_stix";
-import { ComboBox, TextInput } from "@carbon/ibm-security";
+import { ComboBox, TextInput, Row, Column, Button } from "@carbon/ibm-security";
 import { useDispatch } from "react-redux";
 import transformers from "../../global/transformers";
-import { Delete20, List20 } from "@carbon/icons-react";
+import { Add20, Delete20, List20 } from "@carbon/icons-react";
 import ReferencesSelector from "./ReferencesSelector";
 
 const MappedField = ({
@@ -24,14 +26,26 @@ const MappedField = ({
 }) => {
   const dispatch = useDispatch();
   return (
-    <div key={mappedFieldId}>
-      <div className={`bx--row ${styles.object_item__field}`}>
-        <div className={"bx--col-md-3"}>
-          <div className={"bx--row"}>
-            <div className={"bx--col"}>
+    <div key={mappedFieldId} className={styles.object_item__field}>
+      <Row>
+        <div>
+          <Delete20
+            className={`${styles.object_item__btn}`}
+            onClick={() => {
+              isStix
+                ? dispatch(
+                    removeStixField(objectKey, sourceFieldId, mappedFieldId)
+                  )
+                : dispatch(removeMetadataField(objectKey, mappedFieldId));
+            }}
+          />
+        </div>
+        <Column>
+          <Row style={{ marginBottom: ".5rem" }}>
+            <Column>
               <TextInput
                 id={`${mappedFieldId}`}
-                labelText={""}
+                labelText={isStix ? "STIX field" : "Key"}
                 onChange={(e) => {
                   isStix
                     ? dispatch(
@@ -55,12 +69,12 @@ const MappedField = ({
                 size={"sm"}
                 value={mappedFieldKey}
               />
-            </div>
+            </Column>
             {isStix && (
               <div>
-                <List20
-                  style={{ border: 0 }}
-                  className={`${styles.object_item__btn}`}
+                <Button
+                  renderIcon={List20}
+                  kind="ghost"
                   onClick={() => {
                     dispatch(
                       openSelectFieldModal(
@@ -70,66 +84,59 @@ const MappedField = ({
                       )
                     );
                   }}
-                />
+                >
+                  From list
+                </Button>
               </div>
             )}
-          </div>
-        </div>
-        <div className={"bx--col-md-2"}>
-          <ComboBox
-            id={`ComboBox_${mappedFieldId}`}
-            size={"sm"}
-            placeholder={"Search Transformer"}
-            ariaLabel="transformers_combobox"
-            items={transformers}
-            selectedItem={
-              mappedFieldTransformer ? mappedFieldTransformer : null
-            }
-            onChange={(e) => {
-              isStix
-                ? dispatch(
-                    updateStixField(
-                      e.selectedItem,
-                      "transformer",
-                      objectKey,
-                      sourceFieldId,
-                      mappedFieldId
-                    )
-                  )
-                : dispatch(
-                    updateMetadataField(
-                      e.selectedItem,
-                      "transformer",
-                      objectKey,
-                      mappedFieldId
-                    )
-                  );
-            }}
-          />
-        </div>
+          </Row>
 
-        {isStix && (
-          <ReferencesSelector
-            objectKey={objectKey}
-            sourceFieldId={sourceFieldId}
-            mappedFieldId={mappedFieldId}
-            selectedReferences={mappedFieldReferences}
-          />
-        )}
-
-        <div>
-          <Delete20
-            className={`${styles.object_item__btn}`}
-            onClick={() => {
-              isStix
-                ? dispatch(
-                    removeStixField(objectKey, sourceFieldId, mappedFieldId)
-                  )
-                : dispatch(removeMetadataField(objectKey, mappedFieldId));
-            }}
-          />
-        </div>
-      </div>
+          <Row>
+            <Column>
+              <ComboBox
+                id={`ComboBox_${mappedFieldId}`}
+                size={"sm"}
+                placeholder={"Search Transformer"}
+                ariaLabel="transformers_combobox"
+                items={transformers}
+                selectedItem={
+                  mappedFieldTransformer ? mappedFieldTransformer : null
+                }
+                onChange={(e) => {
+                  isStix
+                    ? dispatch(
+                        updateStixField(
+                          e.selectedItem,
+                          "transformer",
+                          objectKey,
+                          sourceFieldId,
+                          mappedFieldId
+                        )
+                      )
+                    : dispatch(
+                        updateMetadataField(
+                          e.selectedItem,
+                          "transformer",
+                          objectKey,
+                          mappedFieldId
+                        )
+                      );
+                }}
+              />
+            </Column>
+            <Column>
+              {isStix && (
+                <ReferencesSelector
+                  objectKey={objectKey}
+                  sourceFieldId={sourceFieldId}
+                  mappedFieldId={mappedFieldId}
+                  selectedReferences={mappedFieldReferences}
+                />
+              )}
+            </Column>
+          </Row>
+        </Column>
+      </Row>
     </div>
   );
 };
