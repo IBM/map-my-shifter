@@ -7,6 +7,7 @@ import {
   updateStixField,
 } from "../../store/actions/to_stix";
 import { addField } from "../../store/actions/from_stix";
+import {updateSearchFieldValue} from "../../store/actions/stix";
 
 const AddFieldItems = ({
   title,
@@ -21,7 +22,7 @@ const AddFieldItems = ({
   const handleSelectStixField = (value, required, fieldNameToUpdate) => {
     isToStix
       ? dispatch(updateStixField(value, fieldNameToUpdate)) &&
-        dispatch(closeSelectFieldModal())
+        dispatch(closeSelectFieldModal()) && dispatch(updateSearchFieldValue(""))
       : dispatch(addField(value, required));
   };
 
