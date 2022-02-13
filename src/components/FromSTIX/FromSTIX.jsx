@@ -12,11 +12,9 @@ const FromSTIX = () => {
   const stixFields = useSelector((state) => state.stix.stixFields);
   const requiredFields = requiredStixFields[stixVersion];
 
-  const officialStixFields = Object.assign(
-    ...Array.from(stixFields, (field) => ({
-      [field.type]: field.items.map((item) => item.name),
-    }))
-  );
+  const officialStixFields = stixFields.reduce((acc, field) => {
+    return {...acc, [field.type]: field.items.map((item) => item.name)};
+  }, {});
 
   const officialStixKeys = useMemo(
     () =>
