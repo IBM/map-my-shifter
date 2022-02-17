@@ -2,8 +2,6 @@
 
 # `map-my-shifter`
 
-> STIX-Shifter Connector's Mapping Builder
-
 The map-my-shifter (MMS) project provides a visual editor for building mappings for [STIX-Shifter](https://github.com/opencybersecurityalliance/stix-shifter) modules.
 A typical (module) connector requires two types of field mappings:
 
@@ -15,7 +13,9 @@ A typical (module) connector requires two types of field mappings:
 - If you just want to use the editor - you can use the [online version](https://ibm.github.io/map-my-shifter/) to:
   - Create a new mapping file from scratch, for a new stix shifter module.
   - Load an existing mapping file, edit the file and save it to a new file.
-- You can embed this editor as a react component in your own react carbon app
+- Planned:
+  - Add support for embedding this editor as a react component in your own react carbon app
+  - Add support for consumption as a client application (perhaps as an [electron](https://github.com/electron/electron) app)
 
 ### Demo
 
@@ -25,12 +25,12 @@ https://ibm.github.io/map-my-shifter/
 
 MMS is a static client side app, there is no backend involved, except from serving the static content. It is built with the [ReactJS](https://reactjs.org) library, and designed using [Carbon Design System](https://www.carbondesignsystem.com) components.
 
-### Installation
+### Local Installation (TBD)
 
 - run `npm install map-my-shifter`
 - import modules: `import {FromStix, ToStix} from 'map-my-shifter';`
 
-### Usage
+### Usage as a stand alone component (TBD)
 
 1. map-my-shifter component: a react component that displays the STIX mappings
    - `<FromStix.Mapping/>`
@@ -55,6 +55,7 @@ MMS is a static client side app, there is no backend involved, except from servi
 - [Bar Haim](https://github.com/barvhaim)
 - [Ido Hersko](https://github.com/idohersko)
 - [Noaa Kless](https://github.com/noaakl)
+- [Aviv Ron](https://github.com/aviv1ron1)
 
 ### Licensing
 
