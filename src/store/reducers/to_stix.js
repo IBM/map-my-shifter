@@ -105,12 +105,13 @@ const ToSTIXReducer = (state = INITIAL_STATE, action) => {
     }
 
     case ADD_NEW_METADATA_OBJECT: {
+      const currentMetadataMapping = state.metadataMapping;
       if (!(action.payload?.name in state.metadataMapping)) {
         return {
           ...state,
           metadataMapping: {
-            ...state.metadataMapping,
             [action.payload.name]: [],
+            ...currentMetadataMapping,
           },
         };
       }
