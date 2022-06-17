@@ -90,13 +90,14 @@ const ToSTIXReducer = (state = INITIAL_STATE, action) => {
     }
 
     case ADD_NEW_STIX_OBJECT: {
+      const currentStixMapping = state.stixMapping;
       if (!(action.payload?.name in state.stixMapping)) {
         return {
           ...state,
           stixObjects: [...state.stixObjects, action.payload.name],
           stixMapping: {
-            ...state.stixMapping,
             [action.payload.name]: {},
+            ...currentStixMapping,
           },
         };
       }
