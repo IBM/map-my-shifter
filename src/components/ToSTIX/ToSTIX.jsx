@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import MappingTabs from "./MappingTabs";
 import Statistics from "./Statistics";
 
-const ToSTIX = () => {
+const ToSTIX = ({isShown}) => {
   const stixMapping = useSelector((state) => state.toStix.stixMapping);
 
   return (
@@ -11,6 +11,7 @@ const ToSTIX = () => {
       <div className="bx--grid">
         <div className="bx--row">
           <MappingTabs />
+          {isShown &&
           <div className="bx--col-sm-1">
             <div className="bx--row">
               <div className="bx--col-sm-4">
@@ -18,6 +19,7 @@ const ToSTIX = () => {
               </div>
             </div>
           </div>
+          }
         </div>
       </div>
     </>
