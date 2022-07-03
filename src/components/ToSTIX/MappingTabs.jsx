@@ -10,7 +10,7 @@ import { MAPPING_TYPE } from "../../global/constants";
 const MappingTabs = () => {
   return (
     <>
-      <div className="bx--col-sm-3">
+      <div className="bx--col-sm">
         <Tabs>
           <Tab id="StixObjects" label="STIX">
             <MappingTab

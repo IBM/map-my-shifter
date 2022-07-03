@@ -6,7 +6,7 @@ import Statistics from "./Statistics";
 import { getDataForStatistics, getOfficialFieldsFromMapping } from "./utils";
 import { requiredStixFields } from "../../global/requiredStixFields";
 
-const FromSTIX = () => {
+const FromSTIX = ({isShown}) => {
   const stixMapping = useSelector((state) => state.fromStix.stixMapping);
   const stixVersion = useSelector((state) => state.stix.stixVersion);
   const stixFields = useSelector((state) => state.stix.stixFields);
@@ -38,16 +38,22 @@ const FromSTIX = () => {
     requiredFields
   );
 
+  // const [isShown, setIsShown] = useState(false);
+
+
+  // const handleShowHideStatistics = () => {
+  //   setIsShown(current => !current);
+  // };
   return (
     <div className="bx--grid">
       <div className="bx--row">
         <div className="bx--col-sm-1">
           <SelectFields officialFields={mappingOfficialFields} />
         </div>
-
-        <div className="bx--col-sm-2">
+        <div className="bx--col">
           <Mapping />
         </div>
+        {isShown &&
         <div className="bx--col-sm-1">
           <div className="bx--row">
             <div className="bx--col-sm-4">
@@ -58,6 +64,7 @@ const FromSTIX = () => {
             </div>
           </div>
         </div>
+        }
       </div>
     </div>
   );
