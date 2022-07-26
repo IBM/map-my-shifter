@@ -10,12 +10,14 @@ import {
   SHOW_CUSTOM_FIELD_MODAL,
   CLOSE_CUSTOM_FIELD_MODAL,
   UPDATE_FROM_STIX_MAPPINGS_FROM_FILE,
+  UPDATE_STATISTICS,
 } from "../actions/from_stix";
 
 const INITIAL_STATE = {
   stixMapping: {},
   fieldMappingFilter: "",
   customFieldModalShow: false,
+  isStatisticsShown: false,
 };
 
 const FromSTIXReducer = (state = INITIAL_STATE, action) => {
@@ -138,7 +140,13 @@ const FromSTIXReducer = (state = INITIAL_STATE, action) => {
         customFieldModalShow: false,
       };
     }
-
+    case UPDATE_STATISTICS: {
+      const isStatisticsShown = action.payload.isStatisticsShown;
+      return {
+        ...state,
+        isStatisticsShown: isStatisticsShown,
+      };
+    }
     default:
       return state;
   }

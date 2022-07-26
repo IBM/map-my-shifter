@@ -11,6 +11,7 @@ import {
   clearMappings,
 } from "../../store/actions/from_stix";
 import {useState} from 'react';
+import StatisticsButton from "../StatisticsButton/StatisticsButton";
 
 const FrameFromSTIX = () => {
   const stixMapping = useSelector((state) => state.fromStix.stixMapping);
@@ -52,12 +53,12 @@ const FrameFromSTIX = () => {
               </div>
             </div>
             <div className="bx--col--sm">
-              <button type="button" className={`bx--btn--sm bx--btn--tertiary ${styles.statistics_button}`} onClick={() => {handleShowHideStatistics();}}>{isShown? "Hide Statistics" : "Show Statistics"}</button>
+              <StatisticsButton/>
             </div>
           </div>
         </div>
       </div>
-      <FromSTIX isShown={isShown} />
+      <FromSTIX/>
     </div>
   );
 };
