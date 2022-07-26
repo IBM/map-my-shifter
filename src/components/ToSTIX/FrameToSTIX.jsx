@@ -5,6 +5,7 @@ import styles from "./to_stix.module.scss";
 import ToSTIX from ".";
 import Import from "../Import/Import";
 import Export from "../Export/Export";
+import StatisticsButton from "../StatisticsButton/StatisticsButton";
 import { stateMappingToShifterMapping, loadJsonFromDisk } from "./utils";
 import {
   updateMappingsFromFile,
@@ -15,10 +16,6 @@ import {useState} from 'react';
 const FrameToSTIX = () => {
   const stixMapping = useSelector((state) => state.toStix.stixMapping);
   const metadataMapping = useSelector((state) => state.toStix.metadataMapping);
-  const [isShown, setIsShown] = useState(false);
-  const handleShowHideStatistics = () => {
-    setIsShown(current => !current);
-  };
   return (
     <div className="bx--grid">
       <div className="bx--row">
@@ -43,12 +40,13 @@ const FrameToSTIX = () => {
               />
             </div>
             <div  className="bx--col--sm">  
-              <button type="button" className={`bx--btn--sm bx--btn--tertiary ${styles.statistics_button}`} onClick={() => {handleShowHideStatistics();}}>{isShown? "Hide Statistics" : "Show Statistics"}</button>
+              <StatisticsButton
+              />
             </div>
           </div>
         </div>
       </div>
-      <ToSTIX isShown={isShown} />
+      <ToSTIX/>
     </div>
   );
 };
