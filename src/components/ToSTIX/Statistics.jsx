@@ -5,6 +5,7 @@ import { getDataForStatistics } from "./utils";
 import StatisticObject from "./StatisticObject";
 
 const Statistics = ({ stixMapping }) => {
+  const isStatisticsShown = useSelector((state) => state.toStix.isStatisticsShown);
   const stixFields = useSelector((state) => state.stix.stixFields);
   const stixTypesSet = useMemo(
     () => new Set(Object.values(stixFields).map((field) => field.type)),
@@ -21,36 +22,44 @@ const Statistics = ({ stixMapping }) => {
 
   return (
     <>
-      <div className="bx--row">
-        <div className={"bx--col"}>
-          <h4 className={`${styles.section_title}`}>
-            Official VS Custom STIX fields
-          </h4>
-        </div>
-      </div>
+    {isStatisticsShown &&
+      <div className="bx--col-sm-1">
+        <div className="bx--row">
+          <div className="bx--col-sm-4">
+            <div className="bx--row">
+              <div className={"bx--col"}>
+                <h4 className={`${styles.section_title}`}>
+                  Official VS Custom STIX fields
+                </h4>
+              </div>
+            </div>
 
-      <div className="bx--row" style={{ marginBottom: ".75rem" }}>
-        <div className={`bx--col ${styles.statistics__col}`}>
-          <div className="bx--row">
-            <StatisticObject
-              fieldsCount={officialFieldsCount}
-              objectsCount={officialObjectsCount}
-              sum={sum}
-              type={"Official"}
-            />
-          </div>
-        </div>
-        <div className={`bx--col ${styles.statistics__col}`}>
-          <div className="bx--row">
-            <StatisticObject
-              fieldsCount={customFieldsCount}
-              objectsCount={customObjectsCount}
-              sum={sum}
-              type={"Custom"}
-            />
+            <div className="bx--row" style={{ marginBottom: ".75rem" }}>
+              <div className={`bx--col ${styles.statistics__col}`}>
+                <div className="bx--row">
+                  <StatisticObject
+                    fieldsCount={officialFieldsCount}
+                    objectsCount={officialObjectsCount}
+                    sum={sum}
+                    type={"Official"}
+                  />
+                </div>
+              </div>
+              <div className={`bx--col ${styles.statistics__col}`}>
+                <div className="bx--row">
+                  <StatisticObject
+                    fieldsCount={customFieldsCount}
+                    objectsCount={customObjectsCount}
+                    sum={sum}
+                    type={"Custom"}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    }
     </>
   );
 };

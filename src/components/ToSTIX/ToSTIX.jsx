@@ -11,13 +11,7 @@ const ToSTIX = () => {
       <div className="bx--grid">
         <div className="bx--row">
           <MappingTabs />
-          <div className="bx--col-sm-1">
-            <div className="bx--row">
-              <div className="bx--col-sm-4">
-                <Statistics stixMapping={stixMapping} />
-              </div>
-            </div>
-          </div>
+          <Statistics stixMapping={stixMapping} />
         </div>
       </div>
     </>

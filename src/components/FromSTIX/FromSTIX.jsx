@@ -44,20 +44,14 @@ const FromSTIX = () => {
         <div className="bx--col-sm-1">
           <SelectFields officialFields={mappingOfficialFields} />
         </div>
-
-        <div className="bx--col-sm-2">
+        <div className="bx--col">
           <Mapping />
         </div>
-        <div className="bx--col-sm-1">
-          <div className="bx--row">
-            <div className="bx--col-sm-4">
-              <Statistics
-                officialObjectsCount={officialObjectsCount}
-                requiredObjectsCount={requiredObjectsCount}
-              />
-            </div>
-          </div>
-        </div>
+        
+          <Statistics
+            officialObjectsCount={officialObjectsCount}
+            requiredObjectsCount={requiredObjectsCount}
+          />
       </div>
     </div>
   );

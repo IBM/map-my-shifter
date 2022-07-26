@@ -24,6 +24,7 @@ import {
   CLOSE_SELECT_FIELD_MODAL,
   OPEN_MOVE_FIELD_TO_OBJECT_MODAL,
   CLOSE_MOVE_FIELD_TO_OBJECT_MODAL,
+  UPDATE_STATISTICS,
 } from "../actions/to_stix";
 
 const INITIAL_STATE = {
@@ -35,6 +36,7 @@ const INITIAL_STATE = {
   stixObjects: [],
   metadataMapping: {},
   metadataObjects: [],
+  isStatisticsShown: false,
 };
 
 const ToSTIXReducer = (state = INITIAL_STATE, action) => {
@@ -421,6 +423,14 @@ const ToSTIXReducer = (state = INITIAL_STATE, action) => {
       };
     }
 
+    case UPDATE_STATISTICS: {
+      const isStatisticsShown = action.payload.isStatisticsShown;
+      return {
+        ...state,
+        isStatisticsShown: isStatisticsShown,
+      };
+    }
+    
     default: {
       return state;
     }

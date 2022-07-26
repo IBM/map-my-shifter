@@ -25,6 +25,7 @@ export const OPEN_MOVE_FIELD_TO_OBJECT_MODAL =
   "OPEN_MOVE_FIELD_TO_OBJECT_MODAL";
 export const CLOSE_MOVE_FIELD_TO_OBJECT_MODAL =
   "CLOSE_MOVE_FIELD_TO_OBJECT_MODAL";
+export const UPDATE_STATISTICS = "UPDATE_STATISTICS";
 
 export function openNewObjectModal() {
   return {
@@ -237,5 +238,13 @@ export function updateMappingsFromFile(stixMapping, metadataMapping) {
       stixMapping,
       metadataMapping,
     },
+  };
+}
+export function updateStatistics(isStatisticsShown) {
+  return {
+    type: UPDATE_STATISTICS,
+    payload: {
+      isStatisticsShown,
+    }
   };
 }
